@@ -1,0 +1,20 @@
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\POST.VERT
+cmd /C "if exist shaders\post.vert    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\post.vert.spv   shaders\post.vert"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\POST.FRAG
+cmd /C "if exist shaders\post.frag    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\post.frag.spv   shaders\post.frag"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\SCANLINE.VERT
+cmd /C "if exist shaders\scanline.vert    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V  --target-env vulkan1.2 -o spv\scanline.vert.spv   shaders\scanline.vert"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\SCANLINE.FRAG
+cmd /C "if exist shaders\scanline.frag    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\scanline.frag.spv   shaders\scanline.frag"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\DENOISE.COMP
+cmd /C "if exist shaders\denoise.comp    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\denoise.comp.spv   shaders\denoise.comp"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\RAYTRACE.RCHIT
+cmd /C "if exist shaders\raytrace.rchit    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\raytrace.rchit.spv   shaders\raytrace.rchit"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\RAYTRACE.RGEN
+cmd /C "if exist shaders\raytrace.rgen    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\raytrace.rgen.spv   shaders\raytrace.rgen"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\RAYTRACE.RMISS
+cmd /C "if exist shaders\raytrace.rmiss    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\raytrace.rmiss.spv   shaders\raytrace.rmiss"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\RAYTRACESHADOW.RCHIT
+cmd /C "if exist shaders\raytraceShadow.rchit    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\raytraceShadow.rchit.spv   shaders\raytraceShadow.rchit"
+^C:\USERS\KITTY\DESKTOP\EDUCATION\_2024FALL\CS398\RTRTFRAMEWORK\SRC\SHADERS\RAYTRACESHADOW.RMISS
+cmd /C "if exist shaders\raytraceShadow.rmiss    %VULKAN_SDK%/Bin/glslangValidator.exe -DVER=99 -V --target-env vulkan1.2 -o spv\raytraceShadow.rmiss.spv   shaders\raytraceShadow.rmiss"

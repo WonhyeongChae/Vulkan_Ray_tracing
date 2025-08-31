@@ -1,0 +1,87 @@
+#version 460
+#extension GL_EXT_shader_explicit_arithmetic_types_int64  : require
+#extension GL_GOOGLE_include_directive : enable
+
+#include "shared_structs.h"
+
+const int GROUP_SIZE = 128;
+layout(local_size_x = GROUP_SIZE, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 0, rgba32f) uniform image2D inImage;
+layout(set = 0, binding = 1, rgba32f) uniform image2D outImage;
+layout(set = 0, binding = 2, rgba32f) uniform image2D kdBuff;
+layout(set = 0, binding = 3, rgba32f) uniform image2D ndBuff;
+
+layout(push_constant) uniform _pcDenoise { PushConstantDenoise pc; };
+float gaussian[5] = float[5](1.0/16.0, 4.0/16.0, 6.0/16.0, 4.0/16.0, 1.0/16.0);
+
+void main()
+{
+    ivec2 gpos = ivec2(gl_GlobalInvocationID.xy);  // Index of central pixel being denoised
+    
+    // Values associated with the central pixel
+    // @@ Calculate/read each of these for the CENTRAL PIXEL at gpos
+    // cKd = read kdBuff at gpos, clamp value to vec3(0.1) or above
+    // cVal = read .xyz of inImage at gpos;  the pixel value to be denoised
+    // cDem = cVal/cKd;  The pixel value demodulated.
+    // cNrm   = read ndBuff .xyz at gpos
+    // cDepth = read ndBuff .w at gpos
+    vec3 cKd = clamp(imageLoad(kdBuff, gpos).rgb, vec3(0.1), vec3(1.0));
+    vec3 cVal = imageLoad(inImage, gpos).rgb;
+    vec3 cDem = cVal / cKd;
+    vec3 cNrm = imageLoad(ndBuff, gpos).rgb;
+    float cDepth = imageLoad(ndBuff, gpos).w;
+
+    vec3 numerator = vec3(0.0);
+    float denominator = 0.0;
+    // For each (i,j) in a 5x5 block (-2<=i<=2, and -2<=j<=2) calculate an
+    // offset from the CENTRAL PIXEL with pc.stepwidth sized holes
+    // Offset of 5x5 pixels **with holes**
+
+    // Calculate/read a similar set of values as above,
+    // but for the OFFSET PIXEL at location  gpos+offset
+    // and named, perhaps, pKd, pVal, pDem, pNrm, pDepth. 
+    for (int i = -2; i <= 2; ++i) {
+        for (int j = -2; j <= 2; ++j) {
+            ivec2 offset = ivec2(i, j) * pc.stepwidth;
+            ivec2 ppos = gpos + offset;
+            
+            // Values associated with the offset pixel
+            vec3 pKd = clamp(imageLoad(kdBuff, ppos).rgb, vec3(0.1), vec3(1.0));
+            vec3 pVal = imageLoad(inImage, ppos).rgb;
+            vec3 pDem = pVal / pKd;
+            vec3 pNrm = imageLoad(ndBuff, ppos).rgb;
+            float pDepth = imageLoad(ndBuff, ppos).w;
+            
+            // @@ Calculate the weight factor by comparing this loop's
+            // OFFSET PIXEL to the CENTRAL PIXEL.  The weight is a product of 4 factors:
+            //  1: h_weight = guassian[i+2] for a Gaussian distribution in the horizontal direction
+            //  2: v_weight = guassian[j+2] for a Gaussian distribution in the vertical direction
+            //  3: a depth related weight:
+            //      d_weight = exp( -(t*t)/pc.depthFactor ); // or 1.0 if depthFactor is zero
+            //      for t = cDepth-pDepth;
+            //  4: a normal related weight
+            //      n_weight = exp(-d/(pc.normFactor)); // or 1.0 if normFactor is zero
+            //      for t = cNrm-pNrm
+            //      and d = dot(t,t)/(pc.stepwidth*pc.stepwidth);
+            float h_weight = gaussian[i + 2];
+            float v_weight = gaussian[j + 2];
+            float t = cDepth - pDepth;
+            float d_weight = (pc.depthFactor == 0.0) ? 1.0 : exp(-(t * t) / pc.depthFactor);
+            vec3 n_diff = cNrm - pNrm;
+            float d = dot(n_diff, n_diff) / (pc.stepwidth * pc.stepwidth);
+            float n_weight = (pc.normFactor == 0.0) ? 1.0 : exp(-d / pc.normFactor);
+            
+            float weight = h_weight * v_weight * d_weight * n_weight;
+            
+            // Then sum this pixel's contribution to both the numerator and denominator
+            numerator += pDem * weight;
+            denominator += weight;
+        }
+    }
+    
+    // vec3 outVal = cKd*numerator/denominator; // Re-modulate the weighted average color
+    // if (the denominator is zero, just use outVal = cVal;
+    vec3 outVal = (denominator == 0.0) ? cVal : cKd * numerator / denominator;
+
+    imageStore(outImage, gpos, vec4(outVal,0));
+}

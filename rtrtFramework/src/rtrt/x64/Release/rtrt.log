@@ -1,0 +1,54 @@
+﻿  1>Compiling shader shaders\raytraceShadow.rchit
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(237,5): warning MSB8064: Custom build for item "shaders\raytraceShadow.rchit" succeeded, but specified dependency "c:\users\kitty\desktop\education\_2024fall\cs398\rtrtframework\src\shaders\raytraceshadow.rchit" does not exist. This may cause incremental build to work incorrectly.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(237,5): warning MSB8065: Custom build for item "shaders\raytraceShadow.rchit" succeeded, but specified output "c:\users\kitty\desktop\education\_2024fall\cs398\rtrtframework\src\spv\raytraceshadow.rchit.spv" has not been created. This may cause incremental build to work incorrectly.
+  vkapp_raytracing.cpp
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(115,40): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(125,40): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(135,43): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12): warning C4477: 'printf' : format string '%2ld' requires an argument of type 'long', but variadic argument 1 has type 'VkDeviceSize'
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%lld' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%Id' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%I64d' in the format string
+  
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12): warning C4477: 'printf' : format string '%2ld' requires an argument of type 'long', but variadic argument 2 has type 'VkDeviceSize'
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%lld' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%Id' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(227,12):
+      consider using '%I64d' in the format string
+  
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12): warning C4477: 'printf' : format string '%2ld' requires an argument of type 'long', but variadic argument 1 has type 'VkDeviceSize'
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%lld' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%Id' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%I64d' in the format string
+  
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12): warning C4477: 'printf' : format string '%2ld' requires an argument of type 'long', but variadic argument 2 has type 'VkDeviceSize'
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%lld' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%Id' in the format string
+      C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(228,12):
+      consider using '%I64d' in the format string
+  
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(278,26): warning C4244: '=': conversion from 'VkDeviceSize' to 'uint8_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(281,31): warning C4244: '+=': conversion from 'VkDeviceSize' to 'uint8_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(284,32): warning C4244: '=': conversion from 'VkDeviceSize' to 'uint8_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(287,30): warning C4244: '+=': conversion from 'VkDeviceSize' to 'uint8_t', possible loss of data
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(376,18): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\vkapp_raytracing.cpp(394,42): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  2 of 3938 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    21 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  rtrt.vcxproj -> C:\Users\kitty\Desktop\Education\_2024Fall\CS398\rtrtFramework\src\x64\Release\rtrt.exe
+  What goes here?
+  0개 파일이 복사되었습니다.
