@@ -15,8 +15,6 @@ This project showcases the ability to design complex 3D rendering pipelines, imp
 
   * **Real-Time Ray Tracing**: Implemented using Vulkan's `VK_KHR_ray_tracing_pipeline` extension to render realistic lighting effects like shadows and reflections in real-time.
   * **Real-Time Denoising**: Applied a **compute shader-based Denoising filter** to significantly improve image quality by removing noise from the ray-traced results in real-time.
-  * **Physically Based Rendering (PBR)**: Utilized a PBR model to represent materials realistically. *(Please modify this to reflect what you've implemented)*
-  * **Hybrid Rendering**: Implemented a hybrid approach that uses rasterization for primary rendering and ray tracing only for specific effects like shadows and reflections. *(If applicable)*
   * **3D Model Loading**: Capable of loading various 3D model formats such as `.obj` and `.gltf`, including their materials, using the `Assimp` library.
   * **User Interface (GUI)**: Implemented a GUI with `Dear ImGui` to control rendering options, camera settings, and model information in real-time.
 
@@ -24,7 +22,7 @@ This project showcases the ability to design complex 3D rendering pipelines, imp
 
 ## 🛠️ Tech Stack & Libraries
 
-  * **Language**: C++
+  * **Language**: C/C++
   * **Graphics API**: **Vulkan**
   * **Key Libraries**:
       * `GLFW`: Window creation and input handling
